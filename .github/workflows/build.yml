@@ -17,7 +17,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
       
       - name: build
-        run: msbuild samp-gps-plugin.vsxproj -t:rebuild -verbosity:diag -property:Configuration=Release
+        run: msbuild samp-gps-plugin.vsxproj -t:rebuild -property:Configuration=Release;OutDir=build/Release/
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
