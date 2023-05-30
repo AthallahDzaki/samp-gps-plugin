@@ -1,18 +1,9 @@
 name: Build
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - "*"
-      - "*/*"
-      - "**"
-  pull_request:
-    branches:
-      - "*"
-      - "*/*"
-      - "**"
-
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
 jobs:
   build-windows-release:
     runs-on: windows-2019
