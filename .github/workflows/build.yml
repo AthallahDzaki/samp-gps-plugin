@@ -2,13 +2,7 @@ name: Build
 
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'warning'
-      tags:
-        description: 'Test scenario tags'  
+  
 jobs:
   build-windows-release:
     runs-on: windows-2019
@@ -23,7 +17,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
       
       - name: build
-        run: msbuild samp-gps-plugin.vsxproj
+        run: msbuild samp-gps-plugin.vsxproj -t:rebuild -verbosity:diag -property:Configuration=Release
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
